@@ -13,3 +13,7 @@ wheels/
 /logs
 
 /test*.py
+
+# Local frontend reference captures and smoke evidence
+/.local/
+/.playwright-mcp/
