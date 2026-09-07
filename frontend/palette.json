@@ -1,0 +1,322 @@
+[
+  {
+    "id": 0,
+    "name": "Transparent",
+    "hex": "#ffffff"
+  },
+  {
+    "id": 1,
+    "name": "Black",
+    "hex": "#000000"
+  },
+  {
+    "id": 2,
+    "name": "Dark Gray",
+    "hex": "#3c3c3c"
+  },
+  {
+    "id": 3,
+    "name": "Gray",
+    "hex": "#787878"
+  },
+  {
+    "id": 4,
+    "name": "Light Gray",
+    "hex": "#d2d2d2"
+  },
+  {
+    "id": 5,
+    "name": "White",
+    "hex": "#ffffff"
+  },
+  {
+    "id": 6,
+    "name": "Deep Red",
+    "hex": "#600018"
+  },
+  {
+    "id": 7,
+    "name": "Red",
+    "hex": "#ed1c24"
+  },
+  {
+    "id": 8,
+    "name": "Orange",
+    "hex": "#ff7f27"
+  },
+  {
+    "id": 9,
+    "name": "Gold",
+    "hex": "#f6aa09"
+  },
+  {
+    "id": 10,
+    "name": "Yellow",
+    "hex": "#f9dd3b"
+  },
+  {
+    "id": 11,
+    "name": "Light Yellow",
+    "hex": "#fffabc"
+  },
+  {
+    "id": 12,
+    "name": "Dark Green",
+    "hex": "#0eb968"
+  },
+  {
+    "id": 13,
+    "name": "Green",
+    "hex": "#13e67b"
+  },
+  {
+    "id": 14,
+    "name": "Light Green",
+    "hex": "#87ff5e"
+  },
+  {
+    "id": 15,
+    "name": "Dark Teal",
+    "hex": "#0c816e"
+  },
+  {
+    "id": 16,
+    "name": "Teal",
+    "hex": "#10aea6"
+  },
+  {
+    "id": 17,
+    "name": "Light Teal",
+    "hex": "#13e1be"
+  },
+  {
+    "id": 18,
+    "name": "Dark Blue",
+    "hex": "#28509e"
+  },
+  {
+    "id": 19,
+    "name": "Blue",
+    "hex": "#4093e4"
+  },
+  {
+    "id": 20,
+    "name": "Cyan",
+    "hex": "#60f7f2"
+  },
+  {
+    "id": 21,
+    "name": "Indigo",
+    "hex": "#6b50f6"
+  },
+  {
+    "id": 22,
+    "name": "Light Indigo",
+    "hex": "#99b1fb"
+  },
+  {
+    "id": 23,
+    "name": "Dark Purple",
+    "hex": "#780c99"
+  },
+  {
+    "id": 24,
+    "name": "Purple",
+    "hex": "#aa38b9"
+  },
+  {
+    "id": 25,
+    "name": "Light Purple",
+    "hex": "#e09ff9"
+  },
+  {
+    "id": 26,
+    "name": "Dark Pink",
+    "hex": "#cb007a"
+  },
+  {
+    "id": 27,
+    "name": "Pink",
+    "hex": "#ec1f80"
+  },
+  {
+    "id": 28,
+    "name": "Light Pink",
+    "hex": "#f38da9"
+  },
+  {
+    "id": 29,
+    "name": "Dark Brown",
+    "hex": "#684634"
+  },
+  {
+    "id": 30,
+    "name": "Brown",
+    "hex": "#95682a"
+  },
+  {
+    "id": 31,
+    "name": "Beige",
+    "hex": "#f8b277"
+  },
+  {
+    "id": 32,
+    "name": "Medium Gray",
+    "hex": "#aaaaaa"
+  },
+  {
+    "id": 33,
+    "name": "Dark Red",
+    "hex": "#a50e1e"
+  },
+  {
+    "id": 34,
+    "name": "Light Red",
+    "hex": "#fa8072"
+  },
+  {
+    "id": 35,
+    "name": "Dark Orange",
+    "hex": "#e45c1a"
+  },
+  {
+    "id": 36,
+    "name": "Light Tan",
+    "hex": "#d6b594"
+  },
+  {
+    "id": 37,
+    "name": "Dark Goldenrod",
+    "hex": "#9c8431"
+  },
+  {
+    "id": 38,
+    "name": "Goldenrod",
+    "hex": "#c5ad31"
+  },
+  {
+    "id": 39,
+    "name": "Light Goldenrod",
+    "hex": "#e8d45f"
+  },
+  {
+    "id": 40,
+    "name": "Dark Olive",
+    "hex": "#4a6b3a"
+  },
+  {
+    "id": 41,
+    "name": "Olive",
+    "hex": "#5a944a"
+  },
+  {
+    "id": 42,
+    "name": "Light Olive",
+    "hex": "#84c573"
+  },
+  {
+    "id": 43,
+    "name": "Dark Cyan",
+    "hex": "#0f799f"
+  },
+  {
+    "id": 44,
+    "name": "Light Cyan",
+    "hex": "#bbfaf2"
+  },
+  {
+    "id": 45,
+    "name": "Light Blue",
+    "hex": "#7dc7ff"
+  },
+  {
+    "id": 46,
+    "name": "Dark Indigo",
+    "hex": "#4d31b8"
+  },
+  {
+    "id": 47,
+    "name": "Dark Slate Blue",
+    "hex": "#4a4284"
+  },
+  {
+    "id": 48,
+    "name": "Slate Blue",
+    "hex": "#7a71c4"
+  },
+  {
+    "id": 49,
+    "name": "Light Slate Blue",
+    "hex": "#b5aef1"
+  },
+  {
+    "id": 50,
+    "name": "Light Brown",
+    "hex": "#dba463"
+  },
+  {
+    "id": 51,
+    "name": "Dark Beige",
+    "hex": "#d18051"
+  },
+  {
+    "id": 52,
+    "name": "Light Beige",
+    "hex": "#ffc5a5"
+  },
+  {
+    "id": 53,
+    "name": "Dark Peach",
+    "hex": "#9b5249"
+  },
+  {
+    "id": 54,
+    "name": "Peach",
+    "hex": "#d18078"
+  },
+  {
+    "id": 55,
+    "name": "Light Peach",
+    "hex": "#fab6a4"
+  },
+  {
+    "id": 56,
+    "name": "Dark Tan",
+    "hex": "#7b6352"
+  },
+  {
+    "id": 57,
+    "name": "Tan",
+    "hex": "#9c846b"
+  },
+  {
+    "id": 58,
+    "name": "Dark Slate",
+    "hex": "#333941"
+  },
+  {
+    "id": 59,
+    "name": "Slate",
+    "hex": "#6d758d"
+  },
+  {
+    "id": 60,
+    "name": "Light Slate",
+    "hex": "#b3b9d1"
+  },
+  {
+    "id": 61,
+    "name": "Dark Stone",
+    "hex": "#6d643f"
+  },
+  {
+    "id": 62,
+    "name": "Stone",
+    "hex": "#948c6b"
+  },
+  {
+    "id": 63,
+    "name": "Light Stone",
+    "hex": "#cdc59e"
+  }
+]

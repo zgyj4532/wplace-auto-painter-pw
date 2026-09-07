@@ -19,7 +19,7 @@ The requested online skill was found with `npx --yes skills find 'reverse engine
 
 ## Implementation plan
 
-1. Add an isolated, dependency-free browser frontend in `frontend/` and a loopback-only Node static server. No application configuration is loaded. Optional public reference artwork is cached only in `.local/frontend/`.
+1. Add an isolated browser frontend in `frontend/`, reusing MapLibre for the map and gestures and Lucide for icons, with a loopback-only Node static server. No application configuration is loaded. Optional public reference artwork is cached only in `.local/frontend/`.
 2. Reconstruct the full-window map, floating controls, winter theme, login/info/search/leaderboard dialogs, palette and bottom paint tray. Add mobile layouts, accessible names, focus handling and keyboard controls.
 3. Implement local pixel selection, Space strokes, erasing, undo/clear, atomic submit, a 30-second charge clock, local persistence, coordinate navigation, zoom/pan, pixel opacity, and PNG/JSON export. Include a clearly labeled local demo entry; never use a real identity provider or production write endpoint.
 4. Reuse the project's color IDs and coordinate formulas. Add a local bridge fixture and an opt-in smoke runner that invokes the actual `WplacePage`, `PaintPanel`, and injected `paint_btn.js` against the loopback page with local module exports. Verify visible pixel results, submitted payload and batch success.
@@ -28,3 +28,9 @@ The requested online skill was found with `npx --yes skills find 'reverse engine
 ## Acceptance boundaries
 
 The deliverable is an interactive local reconstruction with script integration evidence. Public map/artwork is reference material, demo rankings are sample data, and all painting is local to the browser. Real Google login, shared multiplayer state, paid purchases, Cloudflare challenges and authenticated production behavior are outside this reconstruction. No production success claim follows from local tests.
+
+## Cached bundle evidence and delivery stages
+
+Following the user's instruction to reuse available work, inspect `data/js_chunks` directly. `chunks/B0o22j3x.js` owns palette state, `selected-color`, `show-all-colors`, Space input, interpolation and cancellation cleanup. `chunks/D-x3a9Kt.js` records the expanded color order. `chunks/BwSA7jr4.js` separates `previewPixels`, `clearPixelPreview` and `paintPixels`. `chunks/auT6d-NR.js` contains MapLibre. These files remain runtime reference data and are not committed or served.
+
+Work is on `feat/wplace-local-frontend`, targeting the user-confirmed repository `https://github.com/zgyj4532/wplace-auto-painter-pw`. Commit and push each completed stage: (1) plan and public observations, (2) interactive frontend and state/server validation, (3) actual painter integration, browser QA and final verification report. Preserve the original executable, `_internal/`, `package-manifest.json`, configuration and all cached chunks.

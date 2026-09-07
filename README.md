@@ -45,6 +45,8 @@ uv run main.py
 
 ## Local Packaging
 
+For the interactive local WPlace reconstruction, see [frontend/README.md](frontend/README.md). Run `npm --prefix frontend ci` followed by `npm --prefix frontend run reference`, then open http://127.0.0.1:5173/. All painting in this preview stays in the local browser.
+
 Build the standalone updater before building the main application. Do not set `BUILD_CI=true` for local builds: `build.spec` and `updater.spec` isolate the build from DLLs that may be introduced through the local `PATH`.
 
 ```bash

@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#f3f6fa" />
+    <meta
+      name="description"
+      content="An interactive local WPlace frontend reconstruction. All painting stays in this browser."
+    />
+    <title>Wplace · Local preview</title>
+    <link rel="icon" type="image/svg+xml" href="/assets/globe.svg" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/vendor/maplibre-gl.css" />
+    <script src="/vendor/maplibre-gl.js"></script>
+    <script src="/vendor/lucide.js"></script>
+    <script type="module" src="/app.mjs"></script>
+  </head>
+  <body>
+    <main class="disable-pinch-zoom" aria-label="Wplace local painting preview">
+      <div id="basemap" aria-label="World map"></div>
+      <canvas
+        id="map"
+        role="img"
+        aria-label="Interactive world pixel map. Drag to move, scroll to zoom, and open Paint to draw."
+        tabindex="0"
+      ></canvas>
+      <div class="absolute hud">
+        <nav class="left-tools" aria-label="Map controls">
+          <button
+            class="btn btn-circle btn-sm"
+            id="info"
+            title="Info"
+            aria-label="Info"
+          >
+            <span data-icon="info"></span>
+          </button>
+          <div class="zoom-tools">
+            <button
+              class="btn btn-circle btn-sm zoom"
+              id="zoom-in"
+              title="Zoom in"
+              aria-label="Zoom in"
+            >
+              +
+            </button>
+            <button
+              class="btn btn-circle btn-sm zoom"
+              id="zoom-out"
+              title="Zoom out"
+              aria-label="Zoom out"
+            >
+              −
+            </button>
+          </div>
+          <button
+            class="btn btn-circle btn-sm"
+            id="layers"
+            title="Map layers"
+            aria-label="Map layers"
+          >
+            <span data-icon="layers"></span>
+          </button>
+        </nav>
+        <button
+          id="preview-badge"
+          class="preview-badge"
+          title="About this local preview"
+        >
+          <span></span> LOCAL PREVIEW
+        </button>
+        <nav class="right-tools" aria-label="Explore">
+          <button class="btn btn-primary" id="account">Log in</button>
+          <button
+            class="btn btn-square"
+            id="leaderboard"
+            title="Leaderboard"
+            aria-label="Leaderboard"
+          >
+            <span data-icon="leaderboard"></span>
+          </button>
+          <button
+            class="btn btn-square"
+            id="search"
+            title="Search"
+            aria-label="Search"
+          >
+            <span data-icon="search"></span>
+          </button>
+        </nav>
+        <div id="layers-popover" class="floating-card layers-popover" hidden>
+          <div class="card-heading">
+            Map layers
+            <button
+              class="icon-button"
+              id="close-layers"
+              aria-label="Close map layers"
+            >
+              ×
+            </button>
+          </div>
+          <label class="setting"
+            >Pixel opacity <output id="opacity-value">100%</output></label
+          >
+          <input
+            id="opacity"
+            type="range"
+            min="0"
+            max="100"
+            value="100"
+            aria-label="Pixel opacity"
+          />
+          <div class="segmented" id="opacity-presets">
+            <button data-opacity="0">0%</button
+            ><button data-opacity="50">50%</button
+            ><button class="active" data-opacity="100">100%</button>
+          </div>
+          <label class="setting"
+            >Pixel grid <input id="grid-toggle" type="checkbox" checked
+          /></label>
+          <label class="setting"
+            >Street map <input id="streets-toggle" type="checkbox"
+          /></label>
+          <p class="muted small">
+            Street tiles use OpenStreetMap. Painting always stays local.
+          </p>
+        </div>
+        <button class="btn btn-lg btn-primary paint-launch" id="paint">
+          <span data-icon="brush"></span> Paint
+        </button>
+        <button
+          class="btn btn-square corner-button"
+          id="shortcuts"
+          title="Keyboard shortcuts"
+          aria-label="Keyboard shortcuts"
+        >
+          <span data-icon="keyboard"></span>
+        </button>
+        <button
+          class="btn btn-square corner-button"
+          id="my-location"
+          title="Return to Paris"
+          aria-label="Return to Paris"
+        >
+          <span data-icon="locate"></span>
+        </button>
+        <div id="coordinates" class="coordinates" aria-live="off"></div>
+        <div id="pixel-info" class="floating-card pixel-info" hidden></div>
+      </div>
+      <section
+        id="paint-panel"
+        class="w-full paint-panel"
+        aria-label="Paint palette"
+        hidden
+      >
+        <div class="relative">
+          <div class="items-center panel-header">
+            <div class="selected-color">
+              <span id="selected-swatch"></span
+              ><strong id="selected-name">Black</strong>
+            </div>
+            <div class="charge-status">
+              <span data-icon="bolt"></span><strong id="charges">50 / 50</strong
+              ><span id="charge-timer">Full</span>
+            </div>
+            <button
+              class="btn btn-circle btn-sm"
+              id="undo"
+              title="Undo (Ctrl+Z)"
+              aria-label="Undo"
+            >
+              <span data-icon="undo"></span>
+            </button>
+            <button
+              class="btn btn-circle btn-sm"
+              id="clear"
+              title="Clear selection"
+              aria-label="Clear selection"
+            >
+              <span data-icon="trash"></span>
+            </button>
+            <button
+              class="btn btn-circle btn-sm"
+              id="close-paint"
+              title="Close palette"
+              aria-label="Close palette"
+            >
+              ✕
+            </button>
+          </div>
+          <div
+            class="palette"
+            id="palette"
+            role="group"
+            aria-label="Paint colors"
+          ></div>
+          <div class="palette-options">
+            <button id="all-colors" class="text-button">
+              Show all colors <span>⌄</span></button
+            ><span id="color-count" class="muted small">32 colors</span>
+          </div>
+          <div class="panel-footer">
+            <p><kbd>SPACE</kbd><span> + move to paint faster</span></p>
+            <button class="btn btn-primary submit-paint" id="submit" disabled>
+              <span data-icon="brush"></span
+              ><span id="submit-label">Paint 0 pixels</span></button
+            ><span class="local-save"
+              ><span data-icon="lock"></span> Saved locally</span
+            >
+          </div>
+        </div>
+      </section>
+      <div class="attribution" id="attribution">Local demo canvas</div>
+      <div id="toast" role="status" aria-live="polite" hidden></div>
+    </main>
+    <dialog id="modal" class="modal" aria-labelledby="modal-title">
+      <div class="modal-box">
+        <header>
+          <h1 id="modal-title"></h1>
+          <button
+            class="btn btn-circle btn-sm"
+            id="close-modal"
+            aria-label="Close dialog"
+          >
+            ✕
+          </button>
+        </header>
+        <div id="modal-content"></div>
+      </div>
+    </dialog>
+  </body>
+</html>

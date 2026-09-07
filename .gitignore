@@ -17,3 +17,4 @@ wheels/
 # Local frontend reference captures and smoke evidence
 /.local/
 /.playwright-mcp/
+/frontend/node_modules/
