@@ -30,6 +30,6 @@ npm --prefix frontend test
 uv run python -m scripts.smoke_frontend --url http://127.0.0.1:5173
 ```
 
-The opt-in smoke runner uses an isolated browser context, blocks external requests, calls the actual `WplacePage`/`PaintPanel` methods and unchanged injected submit bridge, and writes its evidence under `.local/frontend-smoke/`. It does not use any real account. It is distinct from an authenticated production test.
+The opt-in smoke runner uses an isolated browser context, blocks external requests, calls the actual `WplacePage`/`PaintPanel` methods and unchanged injected submit bridge, and writes its evidence under `.local/frontend-smoke/`. It does not use any real account. It uses the system Playwright browser cache; if Chromium is missing, run `uv run playwright install chromium` first. It is distinct from an authenticated production test.
 
 See [the reconstruction plan](../docs/frontend-reconstruction-plan.md) for observations and scope, and [verification evidence](../docs/frontend-verification.md) for current results.

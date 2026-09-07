@@ -810,6 +810,9 @@ h1 {
   .palette {
     grid-template-columns: repeat(8, 1fr);
     gap: 8px;
+    max-height: 28dvh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
   .color {
     max-height: 40px;

@@ -141,6 +141,18 @@ def test_space_drag_releases_space_after_movement_failure() -> None:
     assert events[-1] == ("key_up", "Space")
 
 
+def test_space_drag_does_not_interpolate_between_diagonal_pixel_centers() -> None:
+    events: list[tuple[object, ...]] = []
+
+    asyncio.run(_wplace_page(events).paint_space_drag([(0, 0), (1, 1), (2, 2)]))
+
+    # The site interpolates pixels itself. Extra mouse events at cell corners
+    # can select a side neighbor before reaching the next diagonal target.
+    held_moves = [event for event in events[3:-1] if event[0] == "mouse_move"]
+    assert len(held_moves) == 2
+    assert all(event[3] == 1 for event in held_moves)
+
+
 def test_space_drag_releases_space_when_cancelled_during_key_down() -> None:
     events: list[tuple[object, ...]] = []
 

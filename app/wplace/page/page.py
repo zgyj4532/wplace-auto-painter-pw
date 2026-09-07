@@ -363,7 +363,9 @@ class WplacePage:
             await self.page.keyboard.down("Space")
             for offset in offsets[1:]:
                 target_x, target_y = screen_position(offset)
-                await self.page.mouse.move(target_x, target_y, steps=random.randint(2, 4))
+                # WPlace interpolates between pixel centers itself. Intermediate
+                # events at diagonal cell corners can select an untargeted neighbor.
+                await self.page.mouse.move(target_x, target_y, steps=1)
                 await anyio.sleep(random.uniform(0.01, 0.04))
         finally:
             with anyio.CancelScope(shield=True):
