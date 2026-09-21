@@ -53,7 +53,9 @@ class _FakeToastNotifier:
 
     @property
     def setting(self) -> object:
-        raise OSError(22, "Element not found.", None, self._winerror_code)
+        error = OSError(22, "Element not found.")
+        error.winerror = self._winerror_code
+        raise error
 
 
 def _toaster_cls_for_winerror(winerror_code: int) -> type:
