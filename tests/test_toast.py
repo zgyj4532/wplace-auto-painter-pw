@@ -53,9 +53,7 @@ class _FakeToastNotifier:
 
     @property
     def setting(self) -> object:
-        error = OSError(22, "Element not found.")
-        error.winerror = self._winerror_code
-        raise error
+        raise OSError(22, "Element not found.", None, self._winerror_code)
 
 
 def _toaster_cls_for_winerror(winerror_code: int) -> type:
@@ -155,6 +153,7 @@ def test_windows_toast_does_not_repeat_registered_app_identity() -> None:
     assert custom_toast.text_fields == ["Verification required", "Resolve the verification challenge"]
 
 
+@pytest.mark.skipif(sys.platform != "win32", reason="OSError.winerror is Windows-only")
 @pytest.mark.parametrize(
     "winerror_code",
     [
@@ -168,6 +167,7 @@ def test_missing_notification_setting_is_treated_as_enabled(winerror_code: int) 
     assert toast._get_notification_setting() is _FakeNotificationSetting.ENABLED
 
 
+@pytest.mark.skipif(sys.platform != "win32", reason="OSError.winerror is Windows-only")
 def test_other_notification_setting_oserror_disables_toasts() -> None:
     toast, _ = _load_toast("win32", None, toaster_cls=_toaster_cls_for_winerror(12345))
 

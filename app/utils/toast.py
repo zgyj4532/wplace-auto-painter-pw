@@ -79,7 +79,7 @@ if _WINDOWS_TOASTS_AVAILABLE:
             # The notification settings key may not exist before the first toast is shown.
             # WinRT raises Win32 ERROR_NOT_FOUND or HRESULT_FROM_WIN32(ERROR_NOT_FOUND).
             # Treat both as enabled so Windows can create the key on first delivery.
-            if getattr(e, "winerror", None) in {
+            if e.winerror in {
                 winerror.ERROR_NOT_FOUND,
                 winerror.HRESULT_FROM_WIN32(winerror.ERROR_NOT_FOUND),
             }:
